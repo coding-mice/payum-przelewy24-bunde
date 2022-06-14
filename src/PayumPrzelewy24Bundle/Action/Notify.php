@@ -10,9 +10,9 @@ use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
+use Payum\Core\Model\PaymentInterface;
 use Payum\Core\Request\GetHumanStatus;
 use pczyzyk\PayumPrzelewy24Bundle\Api\ApiAwareTrait;
-use Payum\Core\Model\PaymentInterface;
 
 class Notify implements ActionInterface, ApiAwareInterface, GatewayAwareInterface
 {
@@ -33,7 +33,7 @@ class Notify implements ActionInterface, ApiAwareInterface, GatewayAwareInterfac
     /**
      * @param mixed $request
      *
-     * @throws \Payum\Core\Exception\RequestNotSupportedException if the action dose not support the request.
+     * @throws \Payum\Core\Exception\RequestNotSupportedException if the action dose not support the request
      */
     public function execute($request)
     {
@@ -45,6 +45,18 @@ class Notify implements ActionInterface, ApiAwareInterface, GatewayAwareInterfac
         $payment = $this->objectRepository->findOneBy(['number' => $model['p24_session_id']]);
 
         $model['p24_kwota'] = $payment->getTotalAmount();
+
+        if (isset($model['p24_error_code'])) {
+            if ('err104' == $model['p24_error_code']) {
+                $this->updatePaymentStatus($payment, GetHumanStatus::STATUS_PENDING);
+
+                return;
+            }
+            $this->updatePaymentStatus($payment, GetHumanStatus::STATUS_FAILED);
+
+            return;
+        }
+
         $state = $this->api->getPaymentStatus($model);
 
         $details = array_merge($payment->getDetails(), ['state' => $state]);
@@ -69,7 +81,7 @@ class Notify implements ActionInterface, ApiAwareInterface, GatewayAwareInterfac
     /**
      * @param mixed $request
      *
-     * @return boolean
+     * @return bool
      */
     public function supports($request)
     {
