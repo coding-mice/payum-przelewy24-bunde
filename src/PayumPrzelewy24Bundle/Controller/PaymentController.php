@@ -1,6 +1,6 @@
 <?php
 
-namespace pczyzyk\PayumPrzelewy24Bundle\Controller;
+namespace arteneo\PayumPrzelewy24Bundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Route;
 use Payum\Bundle\PayumBundle\Controller\PayumController;
@@ -8,7 +8,7 @@ use Payum\Core\Request\GetHumanStatus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use pczyzyk\PayumPrzelewy24Bundle\Entity\Payment;
+use arteneo\PayumPrzelewy24Bundle\Entity\Payment;
 
 /**
  * @Route("/payment")

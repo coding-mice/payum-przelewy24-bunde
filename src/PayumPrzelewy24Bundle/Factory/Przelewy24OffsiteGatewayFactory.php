@@ -1,11 +1,11 @@
 <?php
 
-namespace pczyzyk\PayumPrzelewy24Bundle\Factory;
+namespace arteneo\PayumPrzelewy24Bundle\Factory;
 
 use GuzzleHttp\Client;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
-use pczyzyk\PayumPrzelewy24Bundle\Api\ApiClient;
+use arteneo\PayumPrzelewy24Bundle\Api\ApiClient;
 
 class Przelewy24OffsiteGatewayFactory extends GatewayFactory {
 

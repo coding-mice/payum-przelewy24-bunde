@@ -1,6 +1,6 @@
 <?php
 
-namespace pczyzyk\PayumPrzelewy24Bundle\Api;
+namespace arteneo\PayumPrzelewy24Bundle\Api;
 
 use Payum\Core\Exception\UnsupportedApiException;
 

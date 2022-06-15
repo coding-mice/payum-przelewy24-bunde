@@ -1,12 +1,12 @@
 <?php
 
-namespace pczyzyk\PayumPrzelewy24Bundle\Action;
+namespace arteneo\PayumPrzelewy24Bundle\Action;
 
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Model\PaymentInterface;
 use Payum\Core\Request\GetHumanStatus;
-use pczyzyk\PayumPrzelewy24Bundle\Api\ApiClient;
+use arteneo\PayumPrzelewy24Bundle\Api\ApiClient;
 
 class Status implements ActionInterface
 {

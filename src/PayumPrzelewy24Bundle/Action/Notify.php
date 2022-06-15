@@ -1,6 +1,6 @@
 <?php
 
-namespace pczyzyk\PayumPrzelewy24Bundle\Action;
+namespace arteneo\PayumPrzelewy24Bundle\Action;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
@@ -12,7 +12,7 @@ use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Model\PaymentInterface;
 use Payum\Core\Request\GetHumanStatus;
-use pczyzyk\PayumPrzelewy24Bundle\Api\ApiAwareTrait;
+use arteneo\PayumPrzelewy24Bundle\Api\ApiAwareTrait;
 
 class Notify implements ActionInterface, ApiAwareInterface, GatewayAwareInterface
 {
